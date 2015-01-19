@@ -3,7 +3,7 @@ class SearchVectors::Motion < SearchVectors::Base
   belongs_to :motion
 
   def self.resource_class
-    :motion
+    ::Motion
   end
 
   def self.searchable_fields
@@ -17,5 +17,9 @@ class SearchVectors::Motion < SearchVectors::Base
 
   def self.ranking_algorithm
     "ts_rank_cd(search_vector, :query)"
+  end
+
+  def self.visible_results_for(user)
+    Queries::VisibleMotions.new(user: user).pluck(:id)
   end
 end

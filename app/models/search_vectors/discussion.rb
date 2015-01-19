@@ -3,7 +3,7 @@ class SearchVectors::Discussion < SearchVectors::Base
   belongs_to :discussion
 
   def self.resource_class
-    :discussion
+    ::Discussion
   end
 
   def self.searchable_fields
@@ -19,4 +19,7 @@ class SearchVectors::Discussion < SearchVectors::Base
     "ts_rank_cd(search_vector, :query)"
   end
 
+  def self.visible_results_for(user)
+    Queries::VisibleDiscussions.new(user: user).pluck(:id)
+  end
 end

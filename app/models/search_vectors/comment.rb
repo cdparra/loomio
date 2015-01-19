@@ -3,7 +3,7 @@ class SearchVectors::Comment < SearchVectors::Base
   belongs_to :comment
 
   def self.resource_class
-    :comment
+    ::Comment
   end
 
   def self.searchable_fields
@@ -16,5 +16,9 @@ class SearchVectors::Comment < SearchVectors::Base
 
   def self.ranking_algorithm
     "ts_rank_cd(search_vector, :query)"
+  end
+
+  def self.visible_results_for(user)
+    Queries::VisibleComments.new(user: user).pluck(:id)
   end
 end

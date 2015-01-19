@@ -8,7 +8,7 @@ module Searchable
 
   module ClassMethods
     def rebuild_search_index!
-      find_each(:batch_size => 100).map(&:sync_search_vector!)
+      find_each(:batch_size => 100).map(&:sync_search_vector_without_delay!)
     end
 
     def search_vector_class
