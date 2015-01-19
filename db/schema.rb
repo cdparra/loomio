@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 20150108030729) do
   create_table "comment_search_vectors", force: true do |t|
     t.integer  "comment_id"
     t.tsvector "search_vector"
-    t.text     "search_data"
   end
+
+  add_index "comment_search_vectors", ["search_vector"], name: "comment_search_vector_index", using: :gin
 
   create_table "comment_votes", force: true do |t|
     t.integer  "comment_id"
@@ -188,8 +189,9 @@ ActiveRecord::Schema.define(version: 20150108030729) do
   create_table "discussion_search_vectors", force: true do |t|
     t.integer  "discussion_id"
     t.tsvector "search_vector"
-    t.text     "search_data"
   end
+
+  add_index "discussion_search_vectors", ["search_vector"], name: "discussion_search_vector_index", using: :gin
 
   create_table "discussions", force: true do |t|
     t.integer  "group_id"
@@ -426,8 +428,9 @@ ActiveRecord::Schema.define(version: 20150108030729) do
   create_table "motion_search_vectors", force: true do |t|
     t.integer  "motion_id"
     t.tsvector "search_vector"
-    t.text     "search_data"
   end
+
+  add_index "motion_search_vectors", ["search_vector"], name: "motion_search_vector_index", using: :gin
 
   create_table "motions", force: true do |t|
     t.string   "name"
