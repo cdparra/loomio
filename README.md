@@ -1,3 +1,5 @@
+This is a fork of the original repository, made for the purpose of experimenting in composing Loomio backend services with other civic engagements platforms (like, for example Agora Voting). Below, the original information of the project. 
+
 <h1><a href="https://www.loomio.org"> <img src="app/assets/images/logo-orange.png" alt="Loomio"/></a> </h1>
  
 [![Build Status](https://travis-ci.org/loomio/loomio.png?branch=master)](https://travis-ci.org/loomio/loomio) 
